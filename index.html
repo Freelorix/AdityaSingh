@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditya Singh — Web Developer Portfolio</title>
+  <meta name="description" content="Aditya Singh — Premium Web Developer Portfolio (HTML + Tailwind + JavaScript)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Sora', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+              400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+              800: '#5b21b6', 900: '#4c1d95'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 0 rgba(124,58,237,0.6)',
+          },
+          keyframes: {
+            floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+            pulseRing: {
+              '0%': { boxShadow: '0 0 0 0 rgba(124,58,237,0.6)' },
+              '70%': { boxShadow: '0 0 0 16px rgba(124,58,237,0)' },
+              '100%': { boxShadow: '0 0 0 0 rgba(124,58,237,0)' }
+            }
+          },
+          animation: {
+            floaty: 'floaty 6s ease-in-out infinite',
+            pulseRing: 'pulseRing 2.2s infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --glass: rgba(255,255,255,.06); }
+    .glass { background: var(--glass); backdrop-filter: blur(10px); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: all .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+  </style>
+  <!-- jsPDF for premium PDF resume export -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-black text-white font-display antialiased selection:bg-brand-500/20">
+  <!-- BACKGROUND DECOR -->
+  <div aria-hidden class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-32 w-[38rem] h-[38rem] bg-brand-600/30 blur-3xl rounded-full animate-floaty"></div>
+    <div class="absolute top-1/2 -right-40 w-[42rem] h-[42rem] bg-fuchsia-500/20 blur-3xl rounded-full animate-floaty" style="animation-delay:.8s"></div>
+  </div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-black/60 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-xl grid place-items-center bg-gradient-to-br from-brand-600 to-fuchsia-500 text-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 18l8-12 8 12" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <span class="font-extrabold tracking-wide">Aditya Singh</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-zinc-300">
+        <a href="#projects" class="hover:text-white">Projects</a>
+        <a href="#skills" class="hover:text-white">Skills</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+       <a href="https://drive.google.com/uc?export=download&id=1sg71Y3noXktAtmgkFM9JAgXPGIrmh5eS"
+   target="_blank"
+   class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">
+  Download CV
+</a>
+
+        <a href="#contact" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-sm font-semibold">Hire Me</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Building <span class="bg-gradient-to-r from-brand-400 to-fuchsia-400 bg-clip-text text-transparent">Web Experiences</span><br/>
+          that Perform & Delight
+        </h1>
+        <p class="mt-5 text-zinc-300 text-lg md:max-w-xl">Frontend-focused Web Developer crafting fast, accessible, and beautiful products with JavaScript, React, and Tailwind CSS.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="px-5 py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 font-semibold inline-flex items-center gap-2 animate-pulseRing">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5"/></svg>
+            View My Work
+          </a>
+          <a href="#contact" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 font-semibold">Contact</a>
+        </div>
+        <div class="mt-6 text-sm text-zinc-400 flex items-center gap-4">
+          <span>📞 +91 9540126204</span>
+          <span>✉️ adityasingh954012@gmail.com</span>
+        </div>
+      </div>
+
+      <!-- Showcase Card -->
+      <div class="reveal relative rounded-3xl border border-white/10 overflow-hidden glass shadow-2xl">
+        <div class="aspect-video">
+          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1600&auto=format&fit=crop" alt="Code preview" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between">
+          <div>
+            <p class="text-xs text-zinc-300">Featured</p>
+            <p class="text-lg font-semibold">Modern UI Kit • Tailwind</p>
+          </div>
+          <a href="#projects" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">See more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/10">
+    <div class="reveal text-center">
+      <h2 class="text-3xl md:text-4xl font-bold">Featured Projects</h2>
+      <p class="text-zinc-400 mt-3">Selection of apps and websites focused on performance, UX, and polish.</p>
+    </div>
+
+    <div class="mt-12 grid gap-7 md:grid-cols-3">
+      <!-- Card 4 (Real Project: Skilloriya) -->
+<article class="reveal relative rounded-2xl overflow-hidden border border-white/10 glass group">
+  <img src="skilloriya.png" alt="Skilloriya Project" class="w-full h-48 object-cover">
+  <div class="p-5">
+    <h3 class="text-lg font-semibold">Skilloriya</h3>
+    <p class="text-sm text-zinc-400 mt-1">Online learning & portfolio platform — built with real-world features.</p>
+    <div class="mt-4 flex gap-2 text-xs text-zinc-400">
+      <span class="px-2 py-1 rounded-lg bg-white/5">HTML</span>
+      <span class="px-2 py-1 rounded-lg bg-white/5">CSS</span>
+      <span class="px-2 py-1 rounded-lg bg-white/5">JavaScript</span>
+    </div>
+    <div class="mt-5 flex items-center gap-3">
+      <a href="https://freelorix.github.io/skilloriya/" target="_blank" class="px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-sm font-semibold">Live</a>
+      <a href="https://freelorix.github.io/skilloriya/" target="_blank" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">Code</a>
+    </div>
+  </div>
+</article>
+
+      <!-- Card 1 -->
+      <article class="reveal relative rounded-2xl overflow-hidden border border-white/10 glass group">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop" alt="Project 1" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-semibold">SaaS Dashboard</h3>
+          <p class="text-sm text-zinc-400 mt-1">Analytics dashboard with charts, auth, and dark mode.</p>
+          <div class="mt-4 flex gap-2 text-xs text-zinc-400">
+            <span class="px-2 py-1 rounded-lg bg-white/5">React</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">Tailwind</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">Recharts</span>
+          </div>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="#" class="px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-sm font-semibold">Live</a>
+            <a href="#" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="reveal relative rounded-2xl overflow-hidden border border-white/10 glass group">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" alt="Project 2" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-semibold">E‑commerce Microfront</h3>
+          <p class="text-sm text-zinc-400 mt-1">High‑speed storefront with cart, filters, and payments.</p>
+          <div class="mt-4 flex gap-2 text-xs text-zinc-400">
+            <span class="px-2 py-1 rounded-lg bg-white/5">TypeScript</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">Next.js</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">Stripe</span>
+          </div>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="#" class="px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-sm font-semibold">Live</a>
+            <a href="#" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="reveal relative rounded-2xl overflow-hidden border border-white/10 glass group">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="Project 3" class="w-full h-48 object-cover">
+        <div class="p-5">
+          <h3 class="text-lg font-semibold">Portfolio Engine</h3>
+          <p class="text-sm text-zinc-400 mt-1">CMS‑driven portfolio with MDX content and tags.</p>
+          <div class="mt-4 flex gap-2 text-xs text-zinc-400">
+            <span class="px-2 py-1 rounded-lg bg-white/5">Next.js</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">MDX</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5">Vercel</span>
+          </div>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="#" class="px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-sm font-semibold">Live</a>
+            <a href="#" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold">Code</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS / SERVICES -->
+  <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/10">
+    <div class="reveal text-center">
+      <h2 class="text-3xl md:text-4xl font-bold">What I Do</h2>
+      <p class="text-zinc-400 mt-3">End‑to‑end web development with a focus on speed, design systems, and DX.</p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-4 gap-6">
+      <div class="reveal glass border border-white/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+        <div class="text-brand-400">⚡</div>
+        <h3 class="mt-2 font-semibold">Frontend Engineering</h3>
+        <p class="text-sm text-zinc-400 mt-1">React, TypeScript, Tailwind, state, a11y, testing.</p>
+      </div>
+      <div class="reveal glass border border-white/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+        <div class="text-brand-400">🧩</div>
+        <h3 class="mt-2 font-semibold">Design Systems</h3>
+        <p class="text-sm text-zinc-400 mt-1">Reusable components, tokens, theming, Storybook.</p>
+      </div>
+      <div class="reveal glass border border-white/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+        <div class="text-brand-400">🔗</div>
+        <h3 class="mt-2 font-semibold">API Integration</h3>
+        <p class="text-sm text-zinc-400 mt-1">REST, auth, caching, and pagination patterns.</p>
+      </div>
+      <div class="reveal glass border border-white/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform">
+        <div class="text-brand-400">🚀</div>
+        <h3 class="mt-2 font-semibold">Performance & SEO</h3>
+        <p class="text-sm text-zinc-400 mt-1">Core Web Vitals, Lighthouse, structured data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER (Transformation Slider) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/10">
+    <div class="reveal">
+      <h3 class="text-2xl md:text-3xl font-bold mb-6">UI Transformation — Before → After</h3>
+      <div id="baWrap" class="relative overflow-hidden rounded-2xl border border-white/10 select-none cursor-col-resize">
+        <img src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=2000&auto=format&fit=crop" alt="Before" class="block w-full h-auto"/>
+        <div id="baTop" class="absolute top-0 left-0 h-full w-1/2 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=2000&auto=format&fit=crop" alt="After" class="block w-full h-auto"/>
+        </div>
+        <div id="baHandle" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[3px] bg-white"></div>
+      </div>
+      <p class="text-sm text-zinc-400 mt-3">Drag the divider to compare before/after.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/10">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal relative rounded-2xl overflow-hidden border border-white/10 glass">
+        <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1600&auto=format&fit=crop" alt="Aditya Singh" class="w-full h-full object-cover">
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+          <p class="text-sm text-zinc-300">Aditya Singh — Web Developer</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+        <p class="text-zinc-300 mb-6">I build modern, reliable web apps with a clean aesthetic and a love for micro‑interactions. My focus is to ship fast, maintainable code and create interfaces that feel premium.</p>
+        <ul class="space-y-3 text-zinc-300">
+          <li>✅ JavaScript, TypeScript, React, Tailwind</li>
+          <li>✅ Git, GitHub, CI/CD (Vercel, Netlify)</li>
+          <li>✅ REST APIs, auth, state management</li>
+          <li>✅ Performance tuning & accessibility</li>
+        </ul>
+        <div class="mt-6">
+         <a href="https://drive.google.com/uc?export=download&id=1sg71Y3noXktAtmgkFM9JAgXPGIrmh5eS"
+   target="_blank"
+   class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 font-semibold">
+  Download CV
+</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (No Form) -->
+  <section id="contact" class="py-24 border-t border-white/10">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="reveal text-center">
+        <h2 class="text-3xl md:text-4xl font-bold">Let’s Collaborate</h2>
+        <p class="mt-3 text-zinc-400">Direct contact. No forms — quick and simple.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 reveal">
+        <a href="tel:+919540126204" class="group rounded-2xl p-6 border border-white/10 glass hover:shadow-glow transition block">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-zinc-400">Phone</p>
+              <p class="mt-1 text-xl font-semibold tracking-wide">+91 9540126204</p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs bg-brand-600 text-white group-hover:scale-105 transition">Call</span>
+          </div>
+        </a>
+
+        <a href="mailto:adityasingh954012@gmail.com" class="group rounded-2xl p-6 border border-white/10 glass hover:shadow-glow transition block">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-zinc-400">Email</p>
+              <p class="mt-1 text-xl font-semibold tracking-wide">adityasingh954012@gmail.com</p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs bg-brand-600 text-white group-hover:scale-105 transition">Email</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center gap-3 text-sm text-zinc-400">
+        <button id="copyPhone" class="px-4 py-2 rounded-xl border border-zinc-700 hover:border-brand-500 transition">Copy Phone</button>
+        <button id="copyEmail" class="px-4 py-2 rounded-xl border border-zinc-700 hover:border-brand-500 transition">Copy Email</button>
+        <span id="copyStatus"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-sm text-zinc-400 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <span>© <span id="yr"></span> Aditya Singh. All rights reserved.</span>
+      <span>Built with ❤️ using Tailwind CSS</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+    },{threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Copy helpers for contact
+    const copyStatus = document.getElementById('copyStatus');
+    document.getElementById('copyPhone').addEventListener('click', async () => {
+      await navigator.clipboard.writeText('+919540126204');
+      copyStatus.textContent = 'Phone copied!';
+      setTimeout(()=> copyStatus.textContent = '', 1500);
+    });
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      await navigator.clipboard.writeText('adityasingh954012@gmail.com');
+      copyStatus.textContent = 'Email copied!';
+      setTimeout(()=> copyStatus.textContent = '', 1500);
+    });
+
+    // Premium PDF download (jsPDF)
+    const hookResume = (btnId) => {
+      const el = document.getElementById(btnId);
+      if(!el) return;
+      el.addEventListener('click', async () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+        // Header Badge
+        doc.setFillColor(124,58,237);
+        doc.roundedRect(40, 40, 140, 28, 8, 8, 'F');
+        doc.setTextColor(255,255,255);
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(12);
+        doc.text('ADITYA SINGH', 52, 59);
+
+        // Name & Title
+        doc.setTextColor(17,24,39);
+        doc.setFontSize(28);
+        doc.setFont('helvetica','bold');
+        doc.text('Aditya Singh', 40, 110);
+        doc.setFontSize(14);
+        doc.setFont('helvetica','normal');
+        doc.setTextColor(107,114,128);
+        doc.text('Web Developer — JavaScript • React • Tailwind CSS', 40, 132);
+
+        // Contacts
+        doc.setTextColor(17,24,39);
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(12);
+        doc.text('Contact', 40, 172);
+        doc.setFont('helvetica','normal');
+        doc.setTextColor(55,65,81);
+        doc.text('+91 9540126204  •  adityasingh954012@gmail.com', 40, 190);
+
+        // Skills
+        doc.setFont('helvetica','bold');
+        doc.setTextColor(17,24,39);
+        doc.text('Skills', 40, 230);
+        doc.setFont('helvetica','normal');
+        doc.setTextColor(55,65,81);
+        doc.text('HTML, CSS, Tailwind, JavaScript, TypeScript, React, Git, REST APIs', 40, 248, { maxWidth: 515 });
+
+        // Experience
+        doc.setFont('helvetica','bold');
+        doc.setTextColor(17,24,39);
+        doc.text('Experience', 40, 288);
+
+        doc.setFont('helvetica','bold');
+        doc.setTextColor(17,24,39);
+        doc.text('Frontend Developer — Freelance', 40, 310);
+        doc.setFont('helvetica','normal');
+        doc.setTextColor(107,114,128);
+        doc.text('2023 — Present', 40, 326);
+        doc.setTextColor(55,65,81);
+        doc.text('Built landing pages and SPAs for small businesses with performance and SEO focus.', 40, 344, { maxWidth: 515 });
+
+        // Footer
+        doc.setDrawColor(229,231,235);
+        doc.line(40, 780, 555, 780);
+        doc.setFontSize(10);
+        doc.setTextColor(107,114,128);
+        doc.text('© ' + new Date().getFullYear() + ' Aditya Singh — Portfolio Resume', 40, 800);
+
+        doc.save('Aditya_Singh_CV.pdf');
+      });
+    }
+    hookResume('downloadResume');
+    hookResume('downloadResume2');
+
+    // Before / After slider interaction
+    const baWrap = document.getElementById('baWrap');
+    const baTop = document.getElementById('baTop');
+    const baHandle = document.getElementById('baHandle');
+    let dragging = false;
+
+    const setWidth = (clientX) => {
+      const rect = baWrap.getBoundingClientRect();
+      let x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      baTop.style.width = x + 'px';
+      baHandle.style.left = x + 'px';
+    }
+
+    baWrap.addEventListener('mousedown', (e)=>{ dragging = true; setWidth(e.clientX); });
+    baWrap.addEventListener('mousemove', (e)=>{ if(dragging) setWidth(e.clientX); });
+    window.addEventListener('mouseup', ()=> dragging = false);
+    // Touch
+    baWrap.addEventListener('touchstart', (e)=> setWidth(e.touches[0].clientX), {passive:true});
+    baWrap.addEventListener('touchmove', (e)=> setWidth(e.touches[0].clientX), {passive:true});
+  </script>
+</body>
+</html>
